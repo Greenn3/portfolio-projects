@@ -1,0 +1,103 @@
+/* Remove default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --card-width: calc(30vw); 
+    --card-height: calc(48vh); 
+
+    --color0: #123524; 
+    --color1: #3E7B27; 
+    --color2: #85A947; 
+    --color3: #EFE3C2; 
+    --color4: #ccc; 
+
+    --color100: #004836;
+    --color150: #2B9348;
+    --color200: #55A630;
+    --color250: #80B918;
+}
+
+/* Full-page layout */
+body, html {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color100);
+  
+}
+
+/* Grid container */
+#grid {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap into new rows */
+    gap: 20px;
+    justify-content: center; /* Centers items */
+ padding-top: 1rem;
+}
+
+
+
+/* Flip card size adjustments */
+.flip-card {
+    width: var(--card-width);
+    height: var(--card-height);
+    perspective: 1000px; /* 3D flip effect */
+
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); 
+   
+   
+}
+
+/* Flip card inner content */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Center text inside the cards */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    border-radius: 8px;
+}
+
+/* Front and back styling */
+.flip-card-front {
+    background-color: var(--color200);
+}
+
+.flip-card-back {
+    background-color: var(--color250);
+    transform: rotateY(180deg);
+}
+
+/* Dummy image styling */
+.dummy-image {
+    width: 80%;
+    height: 50%;
+    background-color: black;
+}
+
+.card-picture{
+   
+    height: 10rem;
+    width: auto;
+    object-fit: contain;
+}
+.picture-container{
+    padding: 2rem;
+}

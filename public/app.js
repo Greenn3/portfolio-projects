@@ -1,3 +1,5 @@
+
+
 document.querySelectorAll('.clickable').forEach(card => {
     card.addEventListener('click', () => {
         const inner = card.querySelector('.flip-card-inner');
@@ -6,24 +8,10 @@ document.querySelectorAll('.clickable').forEach(card => {
             : 'rotateY(180deg)';
     });
 });
-window.addEventListener("load", () => {
-    document.documentElement.style.setProperty("--card-width", window.innerWidth * 0.3 + "px");
-    document.documentElement.style.setProperty("--card-height", window.innerHeight * 0.48 + "px");
-});
-const projects = [
-    { title: "Itemfinder", desc: "Virtual lost and found office", tech: "JAVA | SPRING | HTML", picture: "/assets/pictures/itemfinder2.png" },
-    { title: "Lodgify", desc: "A simple PMS for accommodations", tech: "JAVA | SPRING | JAVAFX", picture: "/assets/pictures/lodgify.png" },
-    { title: "Neural Network", desc: "Basic AI model", tech: "Python | TensorFlow", picture: "/assets/pictures/dummy.png" },
-    { title: "2048", desc: "Classic puzzle game", tech: "JavaScript | CSS | HTML",picture: "/assets/pictures/dummy.png" },
-    { title: "Minesweeper", desc: "Classic game recreation", tech: "JavaScript | React",picture: "/assets/pictures/dummy.png" },
-    { title: "ProjectCrypto", desc: "Cryptocurrency tracking app", tech: "React | Node.js", picture: "/assets/pictures/dummy.png" },
-    { title: "Itemfinder", desc: "Virtual lost and found office", tech: "JAVA | SPRING | HTML", picture: "/assets/pictures/dummy.png" },
-    { title: "Lodgify", desc: "A simple PMS for accommodations", tech: "JAVA | SPRING | JAVAFX", picture: "/assets/pictures/dummy.png" },
-    { title: "Neural Network", desc: "Basic AI model", tech: "Python | TensorFlow", picture: "/assets/pictures/dummy.png" },
-    { title: "2048", desc: "Classic puzzle game", tech: "JavaScript | CSS | HTML", picture: "/assets/pictures/dummy.png" },
-    { title: "Minesweeper", desc: "Classic game recreation", tech: "JavaScript | React", picture: "/assets/pictures/dummy.png" },
-    { title: "ProjectCrypto", desc: "Cryptocurrency tracking app", tech: "React | Node.js", picture: "/assets/pictures/dummy.png" }
-];
+
+
+import projects from './projects.js';
+
 
 function generateCards() {
     const grid = document.getElementById("grid");
@@ -32,19 +20,35 @@ function generateCards() {
     projects.forEach(project => {
         const card = document.createElement("div");
         card.classList.add("flip-card");
+
+        // Generate links if available
+        let linksHTML = "";
+        if (project.links && project.links.length > 0) {
+            linksHTML = `<div class="links">` + 
+                project.links.map(link => 
+                    `<a href="${link.url}" target="_blank" rel="noopener noreferrer">
+                        <img class="link-icon" src="${link.logo}" alt="Link icon" class="link-icon" title="${link.desc_tooltip}">
+                    </a>`
+                ).join("") + 
+                `</div>`;
+        }
+
         card.innerHTML = `
             <div class="flip-card-inner">
                 <div class="flip-card-front">
-                    <h3>${project.title}</h3>
-                    <h4>${project.desc}</h4>
-                     <div class="picture-container"><img src="${project.picture}" class="card-picture"></div>
-                    <div></div>
-                    <p>${project.tech}</p>
-                    <p>Flip for more!</p>
+                    <div class="front-frame">
+                        <h3 class="title">${project.title}</h3>
+                        <h4 class="desc">${project.desc}</h4>
+                        <img src="${project.picture}" class="card-picture">
+                        <p class="techs">${project.tech}</p>
+                    </div>
                 </div>
                 <div class="flip-card-back">
-                    <h3>More Info</h3>
-                    <p>Details about ${project.title}.</p>
+                    <div class="back-frame">
+                        <div class="long-desc">${project.long_desc}</div>
+                    
+                        ${linksHTML} 
+                    </div>
                 </div>
             </div>
         `;

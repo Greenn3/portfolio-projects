@@ -1,4 +1,8 @@
 /* Remove default margins and padding */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +10,15 @@
 }
 
 :root {
-    --card-width: calc(30vw); 
-    --card-height: calc(48vh); 
+   
+--secondary-font: "Rajdhani", sans-serif;
+ 
+    
+    /* --card-width: calc(30vw); 
+    --card-height: calc(48vh);  */
+
+    --card-width: 28rem;
+    --card-height: 20rem;
 
     --color0: #123524; 
     --color1: #3E7B27; 
@@ -15,18 +26,42 @@
     --color3: #EFE3C2; 
     --color4: #ccc; 
 
-    --color100: #004836;
+    --color100: rgb(0, 72, 54);
+
     --color150: #2B9348;
     --color200: #55A630;
     --color250: #80B918;
+    --color300: #9fdc2e;
+
+    --col1: #1A2902;
+    --col2: #344C11;
+    --col3:rgb(119, 141, 69);
+    --col4: #AEC09A;
+    --col5: #AEC670;
+
+
+    --col100: rgb(5, 64, 15);
+    --col101: rgb(25, 94, 40);
+    --col102: rgb(60, 134, 66);
+    --col103: rgb(50, 144, 65);
+    --col104: rgb(115, 194, 90);
+
+
+
 }
+
 
 /* Full-page layout */
 body, html {
+        font-size: 100%; /* Ensure default scaling */
+    transform: none; /* Remove accidental shrinking */
+    zoom: 1; /* Reset any zoom */
+   
     width: 100%;
     min-height: 100vh;
-    background-color: var(--color100);
-  
+    background-color:#1a512e
+    /* background: repeating-linear-gradient(180deg, var(--color0) 0%, var(--color100) 100%,  var(--color0) 0%, var(--color100) 100%,  var(--color0) 0%, var(--color100) 100%); */
+   /* background-image: url("/assets/pictures/background4.2.jpeg"); */
 }
 
 /* Grid container */
@@ -70,34 +105,123 @@ body, html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    
+   
     border-radius: 8px;
+    
 }
 
 /* Front and back styling */
 .flip-card-front {
-    background-color: var(--color200);
+   
+    background: radial-gradient(circle, #68b674 30%,#589d62 100%);
+    /* background-color: #589d62; */
+    padding: 1rem;
+    text-align: center;
 }
 
 .flip-card-back {
-    background-color: var(--color250);
+  
+  
     transform: rotateY(180deg);
+    padding: 1rem;
+    background: radial-gradient(circle,  #d1e89c 20%,#b5cb82 100%);
+    /* background-color:#c6dc93; */
 }
+.front-frame{
+border-color: #b0d3bf;
+border-style:dashed;
+border-width: 1px; 
+width: calc(var(--card-width) - 2rem); 
+height: calc(var(--card-height) - 1.5rem);
+padding-top: 0.5rem;
+padding-bottom: 0.5rem;
 
-/* Dummy image styling */
-.dummy-image {
-    width: 80%;
-    height: 50%;
-    background-color: black;
+display: flex;
+flex-direction: column;
+height: 100%; /* Ensure it fills the available height */
+align-items: center;
 }
+.back-frame{
+    border-color: #63a91f;
+    border-style:dashed;
+    border-width: 1px; 
+    width: calc(var(--card-width) - 2rem); 
+    height: calc(var(--card-height) - 1.5rem);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure it fills the available height */
+    align-items: center;
+    }
+
 
 .card-picture{
    
-    height: 10rem;
+    height: 11rem;
     width: auto;
     object-fit: contain;
+   
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 2%;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4); /* Soft shadow around the image */
+    outline: 3px solid rgba(190, 228, 206, 0.2); /* Light outer frame */
 }
-.picture-container{
-    padding: 2rem;
+
+.techs{
+    font-family: var(--secondary-font);
+    font-weight: 500; 
+    color: #bee4ce;
+   
+    font-size:15.5px ;
+}
+.title, .desc{
+    font-family: 'Poppins', sans-serif;
+    color: rgb(190, 228, 206);
+}
+.title{
+    
+    font-style: bold;
+    font-size: 24px;
+    margin-top: 0;
+    
+}
+
+.desc{
+    padding: 0;
+    font-style: normal;
+    font-size: 16px;
+}
+.long-desc{
+    justify-content:left;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12.5px; /* Adjust size if needed */
+    line-height: 1.25;
+   color:rgb(35, 78, 7);
+   
+   
+
+}
+.link-icon{
+    height: 3rem;
+    width: auto;
+    object-fit: contain;
+    box-shadow: none;
+    outline: none;
+
+    /* Use drop-shadow instead */
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.4));
+}
+
+.links{
+    margin-top: auto;
+    justify-self: center;
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    
 }
